@@ -15,70 +15,72 @@ const graficas = [
         id: 1,
         nombre: "1050TI",
         estado: "Nuevo",
-        modelo: "GTX"
+        modelo: "GTX",
+        precio: "300"
     },
     {
         id: 2,
         nombre: "1660TI",
-        estado: "Usada",
-        modelo: "GTX"
+        estado: "Nuevo",
+        modelo: "GTX",
+        precio: "400"
     },
     {
         id: 3,
         nombre: "3070",
-        estado: "Usada",
-        modelo: "RTX"
+        estado: "Nuevo",
+        modelo: "RTX",
+        precio: "700"
     },
     {
         id: 4,
         nombre: "3090",
         estado: "Nuevo",
-        modelo: "RTX"
+        modelo: "RTX",
+        precio: "900"
     },
 ];
 console.log(graficas)
 
-while (option !== 0) {
-    option = Number(prompt("Ingrese que anda buscando:\n1. Graficas RTX-GTX\n2. Ver Grafica\n0. Salir"));
+while (option) {
+    option = Number(prompt("Ingrese entre 1,2,3,4 u 0. Dependiendo la grafica que elijas :\n1. GTX 1050TI\n2. GTX 1660TI\n3. RTX 3070\n4. RTX 3070\n0. Salir"));
 
     switch (option) {
         case 1:
-            const nombre = String(prompt("Ingresa que grafica estas buscando:\n 1. 1050TI\n 2. 1660ti\n 3. 3070\n 4. 3090"));
-            const modelo = prompt("Ingrese el modelo: GTX o RTX");
-            const estado = Number(prompt("La tiene en \n 1. Nuevo\n 2. Usada"));
-            const id = getLastID() + 1;
-             nuevaGrafica(id, nombre, modelo, estado);
+            agregarAlCarrito(graficas[option - 1])
             break;
         case 2:
-            alert("Ingresaste la Opción # " + option);
+            agregarAlCarrito(graficas[option - 2])
+            break;
+        case 3:
+            agregarAlCarrito(graficas[option - 3])
+            break;
+        case 4:
+            agregarAlCarrito(graficas[option - 4])
             break;
         case 0:
-            alert("Gracias, vuelva pronto ");
-            break;
         default:
-            alert("La opción ingresada no es correcta, intente nuevamente")
+            alert("Gracias, vuelva pronto.")
     }
 }
 
 
 
 
-function nuevaGrafica(id, nombre, modelo, estado) {
+function agregarAlCarrito(id) {
     graficas.push({
-        id,
-        nombre,
-        estado,
-        modelo
+        id
     });
-    /* console.log(nuevaGrafica); */
+    console.log(agregarAlCarrito);
 
 
     return "Se agrego la grafica correctamente con el id " + id;
- 
+
 };
 
+
 function getLastID() {
-   return graficas.length;
+    return graficas.length;
 };
 
 
