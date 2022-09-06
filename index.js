@@ -6,49 +6,83 @@ function solicitarNombre() {
     }
 }
 
-function mostrarProductos() {
-    let producto;
-    do {
-        producto = parseInt(prompt("Que grafica llevara? : \n1)Rtx3050\n2)Rtx3070\n3)Rtx3090"
-        ))
-    } while (producto != 1 && producto != 2 && producto != 3)
-    switch (producto) {
-        case 1:
-            return "Rtx3050";
-        case 2:
-            return "Rtx3070";
-        case 3:
-            return "Rtx3090";
-    }
-}
-
-function validarPrecio(producto) {
-    if (producto === "Rtx3050") {
-        return 500;
-    }
-    else if (producto === "Rtx3070") {
-        return 800;
-    }
-    else if (producto === "Rtx3090") {
-        return 1000;
-    }
-
-}
-
-function cobrar(nombre, precio) {
-    alert("Vas adquirir la siguiente grafica: " + nombre + "\nPrecio: $" + precio);
-    let pago = parseInt(prompt("Con cuanto pagas?"))
-    if (pago > precio) {
-        alert("Gracias su vuelto fue de " + (pago - precio))
-    } else {
-        alert("No tenes saldo suficiente!")
-    }
-
-}
-
 solicitarNombre();
 
-let miProducto = mostrarProductos();
-let precioProducto = validarPrecio(miProducto);
-console.log(precioProducto);
-cobrar(miProducto, precioProducto)
+let option;
+
+const graficas = [
+    {
+        id: 1,
+        nombre: "1050TI",
+        estado: "Nuevo",
+        modelo: "GTX"
+    },
+    {
+        id: 2,
+        nombre: "1660TI",
+        estado: "Usada",
+        modelo: "GTX"
+    },
+    {
+        id: 3,
+        nombre: "3070",
+        estado: "Usada",
+        modelo: "RTX"
+    },
+    {
+        id: 4,
+        nombre: "3090",
+        estado: "Nuevo",
+        modelo: "RTX"
+    },
+];
+console.log(graficas)
+
+while (option !== 0) {
+    option = Number(prompt("Ingrese que anda buscando:\n1. Graficas RTX-GTX\n2. Ver Grafica\n0. Salir"));
+
+    switch (option) {
+        case 1:
+            const nombre = String(prompt("Ingresa que grafica estas buscando:\n 1. 1050TI\n 2. 1660ti\n 3. 3070\n 4. 3090"));
+            const modelo = prompt("Ingrese el modelo: GTX o RTX");
+            const estado = Number(prompt("La tiene en \n 1. Nuevo\n 2. Usada"));
+            const id = getLastID() + 1;
+             nuevaGrafica(id, nombre, modelo, estado);
+            break;
+        case 2:
+            alert("Ingresaste la Opción # " + option);
+            break;
+        case 0:
+            alert("Gracias, vuelva pronto ");
+            break;
+        default:
+            alert("La opción ingresada no es correcta, intente nuevamente")
+    }
+}
+
+
+
+
+function nuevaGrafica(id, nombre, modelo, estado) {
+    graficas.push({
+        id,
+        nombre,
+        estado,
+        modelo
+    });
+    /* console.log(nuevaGrafica); */
+
+
+    return "Se agrego la grafica correctamente con el id " + id;
+ 
+};
+
+function getLastID() {
+   return graficas.length;
+};
+
+
+
+
+
+
