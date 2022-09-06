@@ -25,7 +25,7 @@ const graficas = [
     },
     {
         id: 3,
-        nombre: "3070",
+        nombre: "3070TI",
         estado: "Usada",
         modelo: "RTX"
     },
@@ -39,47 +39,37 @@ const graficas = [
 console.log(graficas)
 
 while (option !== 0) {
-    option = Number(prompt("Ingrese que anda buscando:\n1. Graficas RTX-GTX\n2. Ver Grafica\n0. Salir"));
+    option = Number(prompt("Menu de las graficas disponibles:\n 1. GTX 1050TI\n 2. GTX 1660TI\n 3. RTX 3070TI\n 4. RTX 3090\n 0. Salir."));
 
     switch (option) {
         case 1:
-            const nombre = String(prompt("Ingresa que grafica estas buscando:\n 1. 1050TI\n 2. 1660ti\n 3. 3070\n 4. 3090"));
-            const modelo = prompt("Ingrese el modelo: GTX o RTX");
-            const estado = Number(prompt("La tiene en \n 1. Nuevo\n 2. Usada"));
-            const id = getLastID() + 1;
-             nuevaGrafica(id, nombre, modelo, estado);
+            const id1 = Number(prompt("Usted va a comprar la grafica GTX 1050TI, Ponga 1."));
+            alert("Gracias por la compra, vuelva pronto.")
+            agregarAlCarrito(graficas[option - 1])
             break;
         case 2:
-            alert("Ingresaste la Opción # " + option);
+            agregarAlCarrito(graficas[option - 2])
+            break;
+        case 3:
+            agregarAlCarrito(graficas[option - 3])
+            break;
+        case 4:
+            agregarAlCarrito(graficas[option - 4])
             break;
         case 0:
-            alert("Gracias, vuelva pronto ");
-            break;
-        default:
-            alert("La opción ingresada no es correcta, intente nuevamente")
+            alert("Gracias, vuelva pronto.")
     }
 }
 
-
-
-
-function nuevaGrafica(id, nombre, modelo, estado) {
+function agregarAlCarrito(id) {
     graficas.push({
         id,
-        nombre,
-        estado,
-        modelo
     });
-    /* console.log(nuevaGrafica); */
-
 
     return "Se agrego la grafica correctamente con el id " + id;
- 
-};
+}
 
-function getLastID() {
-   return graficas.length;
-};
+
 
 
 
