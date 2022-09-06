@@ -40,6 +40,10 @@ const graficas = [
         precio: "900"
     },
 ];
+
+const carrito = [];
+
+
 console.log(graficas)
 
 while (option!== 1 && option!==2 && option!==3 && option!==4) {
@@ -48,15 +52,19 @@ while (option!== 1 && option!==2 && option!==3 && option!==4) {
     switch (option) {
         case 1:
             agregarAlCarrito(graficas[option - 1])
+            alert("Gracias por comprar")
             break;
         case 2:
-            agregarAlCarrito(graficas[option - 2])
+            agregarAlCarrito(graficas[option - 1])
+            alert("Gracias por comprar")
             break;
         case 3:
-            agregarAlCarrito(graficas[option - 3])
+            agregarAlCarrito(graficas[option - 1])
+            alert("Gracias por comprar")
             break;
         case 4:
-            agregarAlCarrito(graficas[option - 4])
+            agregarAlCarrito(graficas[option - 1])
+            alert("Gracias por comprar")
             break;
         case 0:
         default:
@@ -68,10 +76,10 @@ while (option!== 1 && option!==2 && option!==3 && option!==4) {
 
 
 function agregarAlCarrito(id) {
-    graficas.push({
+    carrito.push({
         id
     });
-    console.log(agregarAlCarrito);
+    console.log(carrito);
 
 
     return "Se agrego la grafica correctamente con el id " + id;
@@ -79,9 +87,9 @@ function agregarAlCarrito(id) {
 }
 
 
-/* function getLastID() {
+function getLastID() {
     return graficas.length;
-} */
+} 
 
 
 
