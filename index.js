@@ -42,7 +42,7 @@ const graficas = [
 ];
 console.log(graficas)
 
-while (option) {
+while (option!== 1 && option!==2 && option!==3 && option!==4) {
     option = Number(prompt("Ingrese entre 1,2,3,4 u 0. Dependiendo la grafica que elijas :\n1. GTX 1050TI\n2. GTX 1660TI\n3. RTX 3070\n4. RTX 3070\n0. Salir"));
 
     switch (option) {
@@ -76,12 +76,12 @@ function agregarAlCarrito(id) {
 
     return "Se agrego la grafica correctamente con el id " + id;
 
-};
+}
 
 
-function getLastID() {
+/* function getLastID() {
     return graficas.length;
-};
+} */
 
 
 
