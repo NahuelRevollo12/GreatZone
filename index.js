@@ -8,7 +8,7 @@ function solicitarNombre() {
 
 solicitarNombre();
 
-let option;
+
 
 const graficas = [
     {
@@ -16,37 +16,125 @@ const graficas = [
         nombre: "1050TI",
         estado: "Nuevo",
         modelo: "GTX",
-        precio: "300"
+        precio: 300
     },
     {
         id: 2,
         nombre: "1660TI",
         estado: "Nuevo",
         modelo: "GTX",
-        precio: "400"
+        precio: 400
     },
     {
         id: 3,
         nombre: "3070",
         estado: "Nuevo",
         modelo: "RTX",
-        precio: "700"
+        precio: 700
     },
     {
         id: 4,
         nombre: "3090",
         estado: "Nuevo",
         modelo: "RTX",
-        precio: "900"
+        precio: 900
     },
 ];
 
+let menu = "Las graficas en Stock son:\n";
+
+graficas.forEach((grafica)=>{
+    console.log(grafica);
+    menu += `${grafica.id}) esta grafica es la mejor ${grafica.nombre} ${grafica.modelo}\n`;
+})
+menu += "0) Salir";
+
+let option;
 const carrito = [];
 
+function seleccionarGrafica(){
+    while (option !== 0) {
+        option = Number(prompt(menu));
+        
+        let productoEncontrado = graficas.find((grafica)=>grafica.id == option);
+        
+        if (productoEncontrado == undefined) {
+            alert("Gracias, vuelva pronto");
+        } else {
+            alert(`La grafica encontrada es: ${productoEncontrado.nombre} el precio es ${productoEncontrado.precio}`)
+            agregarAlCarrito(productoEncontrado)
+        }
+    }
+    
+}
 
-console.log(graficas)
 
-while (option!== 1 && option!==2 && option!==3 && option!==4) {
+function agregarAlCarrito(grafica) {
+    carrito.push(grafica);
+    console.log(carrito);
+}
+
+
+function getLastID() {
+    return graficas.length;
+} 
+
+seleccionarGrafica();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(graficas)
+
+
+
+
+/* const carrito = [];
+let option;
+
+while (option !== 0) {
     option = Number(prompt("Ingrese entre 1,2,3,4 u 0. Dependiendo la grafica que elijas :\n1. GTX 1050TI\n2. GTX 1660TI\n3. RTX 3070\n4. RTX 3070\n0. Salir"));
 
     switch (option) {
@@ -75,6 +163,8 @@ while (option!== 1 && option!==2 && option!==3 && option!==4) {
 
 
 
+
+
 function agregarAlCarrito(id) {
     carrito.push({
         id
@@ -89,7 +179,10 @@ function agregarAlCarrito(id) {
 
 function getLastID() {
     return graficas.length;
-} 
+}  */
+
+
+
 
 
 
