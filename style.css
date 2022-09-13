@@ -1,4 +1,10 @@
 body {
-    background: rgb(75, 75, 75);
-    background: linear-gradient(0deg, rgba(75, 75, 75, 1) 16%, rgba(135, 127, 255, 1) 56%, rgba(132, 129, 228, 1) 83%, rgba(255, 163, 127, 1) 91%);
+    background: rgb(0, 0, 124);
+    background: linear-gradient(90deg, rgba(0, 0, 124, 1) 0%, rgba(6, 7, 233, 1) 50%, rgba(0, 232, 255, 1) 100%);
+}
+
+.pie {
+    background-color: #4B4B4B;
+    margin-top: 2rem;
+
 }

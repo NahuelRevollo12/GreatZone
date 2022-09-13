@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/683eb3bda2.js" crossorigin="anonymous"></script>
+    <script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-auto-a11y="true"></script>
     <link rel="stylesheet" href="./style.css">
 
     <title>Document</title>
@@ -17,8 +17,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./Imagenes/logo-greatzone.jpg" alt="Logo" width="150" height="80" class="d-inline-block align-text-center">
+                <a class="navbar-brand" href="./index.html" data-description="Great-Zone">
+                    <img src="./Imagenes/logo-greatzone.jpg" alt="Logo" width="150" height="80"
+                        class="d-inline-block align-text-center">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -31,15 +32,22 @@
                             <a class="nav-link" aria-current="page" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
+                            <a class="nav-link" href="https://web.whatsapp.com/" target="_blank">Whatsapp</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"></a>
+                            <a class="nav-link" href="https://www.instagram.com/nawuee_r/?hl=es-la"
+                                target="_blank">Instagram</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
+                            <a class="nav-link" href="https://www.linkedin.com/in/nahuelrevollo/"
+                                target="_blank">Linkedin</a>
                         </li>
+
                     </ul>
+                    <div>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -52,22 +60,21 @@
     </header>
 
     <main>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre">
         <h1>Bienvenido a GreatZone!</h1>
-        <h2 class="tituloSecundario">Quienes somos?</h2>
-        <p class="textoDos">Bienvenidos a Nuestra Página Oficial <span class="resaltado">Adonay.</span> Nuestro primeros
-            inicios fueron vendiendo solo a por menor a nuestros primeros grandes clientes, pero poco a poco fuimos
-            ganando
-            terreno y esforzándonos, llegamos a poder comercializar por Mayor, sin ustedes esto sería imposible. los
-            adora
-            <span class="resaltado">Indumentaria Adonay.</span>.
+        <h2>Quienes somos?</h2>
+        <p id="nuestras-graficas">Bienvenidos a Nuestra Página Oficial GreatZone. Lorem ipsum dolor sit amet.
+            </span>
         </p>
         <section>
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                     <div class="col">
                         <div class="card text-white bg-dark">
-                            <img src="./Imagenes/1599-Zotac-Gaming-GTX-1660-Ti-1.jpg" class="card-img-top"
-                                alt="GTX 1660 TI">
+                            <figure><img src="./Imagenes/1599-Zotac-Gaming-GTX-1660-Ti-1.jpg" class="card-img-top"
+                                    alt="GTX 1660 TI">
+                                <figcaption>15% de Descuento en Efectivo</figcaption>
+                            </figure>
                             <div class="card-body">
                                 <h5 class="card-title">Zotac Gaming GTX 1660TI</h5>
                                 <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias
@@ -96,7 +103,7 @@
                             <img src="./Imagenes/Placa_de_Video_Zotac_GeForce_RTX_3070_Ti_8GB_GDDR6X_Trinity_d4b1cf41-med.jpg"
                                 class="card-img-top" alt="RTX 3070 TI">
                             <div class="card-body">
-                                <h5 class="card-title">Zotac GeForce RTX 3070TI 8GB.
+                                <h5 class="card-title">Zotac GeForce RTX 3070TI 8GB
                                 </h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa,
                                     iure..</p>
@@ -111,7 +118,7 @@
                             <img src="./Imagenes/compragamer_Imganen_general_32388_Placa_de_Video_Zotac_GeForce_RTX_3090_24GB_GDDR6X_Trinity_14af4797-grn.jpg"
                                 class="card-img-top" alt="RTX 3090">
                             <div class="card-body">
-                                <h5 class="card-title">Zotac GeForce RTX 3090 24GB.</h5>
+                                <h5 class="card-title">Zotac GeForce RTX 3090 24GB</h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
                                     consequuntur modi unde nisi doloremque dolor!</p>
                                 <div class="text-center">
@@ -119,11 +126,19 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-        </section>
+            <!-- <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="card text-white bg-dark">
+                        <div id="contenedor-de-graficas"></div>
 
+                    </div>
+                </div>
+            </div> -->
+        </section>
 
 
 
@@ -135,13 +150,13 @@
 
     </main>
 
-    <footer>
+    <footer class="pie">
         <div class="container-fluid">
 
             <div class="row p-5 bg-dark text-white">
 
                 <div class="col-xs-12 col-md-6 col-lg-3">
-                    <img src="" alt="Logo" width="550" height="250">
+                    <img src="./Imagenes/logo-greatzone.jpg" alt="Logo" width=230 height=200>
                     <p class="text-secondary">Santa fe, Rosario.</p>
 
                 </div>
@@ -191,7 +206,7 @@
         </div>
 
     </footer>
-    <script src="./index.js"></script> 
+    <script src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
