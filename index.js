@@ -1,8 +1,8 @@
 let stockProductos = [
-    {id: 1, nombre: "RTX 3060", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 12000, gama: "low", img: './imagenes/rtx-3060.jpg'},
-    {id: 2, nombre: "RTX 3070", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 13000, gama: "medium", img: './imagenes/rtx-3070.jpg'},
-    {id: 3, nombre: "RTX 3080", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 14000, gama: "high", img: './imagenes/rtx-3080.jpg'},
-    {id: 4, nombre: "RTX 3090", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 15000, gama: "high", img: './imagenes/rtx-3090.jpg'},
+    { id: 1, nombre: "RTX 3060", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 12000, gama: "low", img: './imagenes/rtx-3060.jpg' },
+    { id: 2, nombre: "RTX 3070", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 13000, gama: "medium", img: './imagenes/rtx-3070.jpg' },
+    { id: 3, nombre: "RTX 3080", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 14000, gama: "high", img: './imagenes/rtx-3080.jpg' },
+    { id: 4, nombre: "RTX 3090", cantidad: 1, desc: "Buenisima para jugar lo que sea", precio: 15000, gama: "high", img: './imagenes/rtx-3090.jpg' },
 ]
 
 const contenedorProductos = document.getElementById('contenedor-productos')
@@ -16,12 +16,12 @@ let carrito = []
 
 
 
-botonVaciar.addEventListener('click', () =>{
+botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     actualizarCarrito()
 })
 
-stockProductos.forEach((producto) =>{
+stockProductos.forEach((producto) => {
     const div = document.createElement('div')
     div.classList.add('producto')
     div.innerHTML = `
@@ -31,13 +31,13 @@ stockProductos.forEach((producto) =>{
     <p>Gama: ${producto.gama}</p>
     <p class="precioProducto">Precio:$ ${producto.precio}</p>
     <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>`
-    
+
     contenedorProductos.appendChild(div)
 
     const boton = document.getElementById(`agregar${producto.id}`)
 
-    boton.addEventListener('click', () => {agregarAlCarrito(producto.id)
-    })
+    boton.addEventListener('click', () => { agregarAlCarrito(producto.id) })
+
 })
 
 const eliminarDelCarrito = (prodId) => {
@@ -58,15 +58,15 @@ const agregarAlCarrito = (prodId) => {
 const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = ""
 
-    carrito.forEach((prod) =>{
+    carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
         <p>${prod.nombre}</p>
         <p>Precio: ${prod.precio}</p>
         <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
-        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></button>`
-
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></button>
+        `
         contenedorCarrito.appendChild(div)
 
     })
