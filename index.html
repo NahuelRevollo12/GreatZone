@@ -4,11 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/683eb3bda2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Bienvenido a GreatZone!</h1>
-    <script src="./index.js"></script>   
+    <header>
+    <h1 id="titulo" class="titulo" >Bienvenido a GreatZone!</h1>
+    <button id="boton-carrito"><i class="fa-solid fa-cart-shopping"></i><span id="contadorCarrito">0</span></button>
+    </header>
+
+    <select id="filtroValor">
+        <option value="low">Gama Baja</option>
+        <option value="medium">Gama Media</option>
+        <option value="high">Gama Alta</option>
+    </select>
+    
+    <main id="contenedor-productos">
+
+    </main>
+
+    <div class="modal-contenedor">
+        <div class="modal-carrito">
+            <h3>Carrito</h3>
+            <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+            <div id="carrito-contenedor">
+                <!-- <div class="productoEnCarrito">
+                    <p>RTX 3060</p>
+                    <p>Precio: $12000</p>
+                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                </div> -->
+
+
+
+            </div>
+            <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+            <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
+        
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="./index.js"></script>
+    <script src="./stock.js"></script>
+    <script src="./modal.js"></script>
+
 </body>
 
 </html>
