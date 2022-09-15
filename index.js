@@ -16,7 +16,8 @@ const graficas = [
         nombre: "1050TI",
         estado: "Nuevo",
         modelo: "GTX",
-        precio: 300
+        precio: 300,
+        detalle: "Es una grafica genial"
     },
     {
         id: 2,
@@ -47,7 +48,7 @@ const graficas = [
         precio: 1200
     }, */
 
-    
+
 ];
 
 // const graficas5 = new graficas("3080", "./img/msi-rtx-3080-gaming-z-trio-10g.jpg", "RTX", 1200 , "https://www.youtube.com/watch?v=7d_jQycdQGo")
@@ -84,18 +85,54 @@ function agregarAlCarrito(grafica) {
     carrito.push(grafica);
     console.log(carrito);
 
-    
+
 
 }
 let greatZone = document.createElement("p");
-    greatZone.innerHTML = "Los mejores descuento de hasta un 10% en tu primera compra"
-    document.body.append(greatZone);
+greatZone.innerHTML = "Los mejores descuento de hasta un 10% en tu primera compra"
+document.body.append(greatZone);
 
 function getLastID() {
     return graficas.length;
 }
 
-/* function mostrarGraficas(graficas) {
+function mostrarDetalle(graficas){
+    const contenedorDeGraficas = document.getElementsByClassName("btn btn-primary");
+    contenedorDeGraficas.innerHTML = "";
+
+    contenedorDeGraficas.innerHTML = `
+    <p>${graficas.detalle}</p>`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function crearBotonVerDetalle(graficas){
+    const button = document.createElement("button");
+    button.innerText = "Ver Detalle";
+    button.addEventListener("click", () => {
+        mostrarDetalle(graficas);
+        crearBotonVolver();
+    })
+    return button;
+}
+
+
+
+function mostrarGraficas(graficas) {
 
     const contenedorDeGraficas = document.getElementById("contenedor-de-graficas"); //<div id="contenedor-de-graficas"></div>
     contenedorDeGraficas.innerHTML = "";
@@ -109,10 +146,17 @@ function getLastID() {
       `;
         contenedorDeGraficas.append(divGrafica);
     })
-} */
 
-// mostrarGraficas(graficas);
+    mostrarGraficas(graficas);
 
+    const botonVerDetalle = crearBotonVerDetalle(graficas)
+    divGrafica.appendChild(botonVerDetalle);
+
+    contenedorDeGraficas.appendChild(divGrafica);
+
+
+
+}
 
 
 
