@@ -9,11 +9,19 @@ const contenedorProductos = document.getElementById('contenedor-productos')
 const contenedorCarrito = document.getElementById('carrito-contenedor')
 const botonVaciar = document.getElementById('vaciar-carrito')
 const contadorCarrito = document.getElementById('contadorCarrito')
+const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
 
 
 let carrito = []
 
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
+    }
+})
 
 
 botonVaciar.addEventListener('click', () => {
@@ -69,8 +77,11 @@ const actualizarCarrito = () => {
         `
         contenedorCarrito.appendChild(div)
 
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
     })
     contadorCarrito.innerHTML = carrito.length
+    console.log(carrito)
     precioTotal.innerHTML = carrito.reduce((acc, prod) => acc + prod.precio, 0)
 }
 
