@@ -20,14 +20,14 @@ const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
 
-let carrito = []
+/* let carrito = []
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')) {
         carrito = JSON.parse(localStorage.getItem('carrito'))
         actualizarCarrito()
     }
-})
+}) */
 
 //SEXTO PASO
 botonVaciar.addEventListener('click', () => {
@@ -78,6 +78,7 @@ const agregarAlCarrito = (prodId) => {
     } else { //EN CASO DE QUE NO ESTÉ, AGREGAMOS EL CURSO AL CARRITO
         const item = stockProductos.find((prod) => prod.id === prodId)//Trabajamos con las ID
         //Una vez obtenida la ID, lo que haremos es hacerle un push para agregarlo al carrito
+
         carrito.push(item)
     }
     //Va a buscar el item, agregarlo al carrito y llama a la funcion actualizarCarrito, que recorre
@@ -88,6 +89,8 @@ const agregarAlCarrito = (prodId) => {
 //agregarAlCarrito(1) //Le pasamos el ID por parametro. Tenemos que asigarle como evento esta funcion al boton
 //con el id de su producto correspondiente
 
+let estadoPrecios = stockProductos.map(producto => producto.precio < 13500 ? 'La grafica es barata' : 'La grafica es cara')
+console.log(estadoPrecios);
 
 // 5 - QUINTO PASO
 const eliminarDelCarrito = (prodId) => {
@@ -137,3 +140,10 @@ const actualizarCarrito = () => {
     //empezando en 0
 }
 
+let carrito = JSON.parse(localStorage.getItem('carrito')) ?? []
+actualizarCarrito()
+
+let [ primerNombre, segundoNombre ] = stockProductos;
+
+console.log(primerNombre);
+console.log(segundoNombre);
