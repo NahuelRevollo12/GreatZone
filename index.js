@@ -19,6 +19,19 @@ const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
+const botonFinalizar = document.getElementById('finalizar-compra');
+
+botonFinalizar.addEventListener('click', () =>{
+    Swal.fire({
+        icon: 'success',
+        title: 'Haz comprado con exito!',
+        text: 'Gracias por elegirnos ',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
+      carrito.length = 0
+      actualizarCarrito()
+})
+
 
 /* let carrito = []
 
@@ -32,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //SEXTO PASO
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
-    actualizarCarrito()
+    actualizarCarrito() //ACA PODRIA AGREGAR UNA LIBRERIA.
 })
 
 //PRIMER PASO, INYECTAR EL HTML.

@@ -94,6 +94,23 @@ p {
     outline: none;
 }
 
+.boton-finalizar {
+    background-color: royalblue;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px;
+    border: none;
+}
+
+.boton-finalizar:hover {
+    cursor: pointer;
+}
+
+.boton-finalizar:focus {
+    outline: none;
+}
+
 .modal-contenedor {
     position: fixed;
     top: 0;
