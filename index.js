@@ -30,6 +30,7 @@ botonFinalizar.addEventListener('click', () =>{
       })
       carrito.length = 0
       actualizarCarrito()
+      console.log(carrito)
 })
 
 
@@ -49,7 +50,7 @@ botonVaciar.addEventListener('click', () => {
 })
 
 //PRIMER PASO, INYECTAR EL HTML.
-let producto = fetch("/data.json")
+let producto = fetch('/data.json')
 .then((res)=>res.json())
 .then((data)=>{
     data.forEach((producto)=>{
@@ -102,29 +103,32 @@ let producto = fetch("/data.json")
 
 //AGREGAR AL CARRITO
 const agregarAlCarrito = (prodId) => {
-    //PARA AUMENTAR LA CANTIDAD Y QUE NO SE REPITA
-    const existe = carrito.some(prod => prod.id === prodId) //comprobar si el elemento ya existe en el carro
+    const existe = carrito.some (prod =>prod.id === prodId)
+    let prod;
+    let item;
+    existe? (prod = carrito.map(prod=>{
+        if (prod.id === prodId)
+        prod.cantidad++
+    })):(item = producto.find((prod) => prod.id === prodId), carrito.push(item))
+    actualizarCarrito()
+}   
+  /*   const existe = carrito.some(prod => prod.id === prodId) 
 
-    if (existe) { //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
-        const prod = carrito.map(prod => { //creamos un nuevo arreglo e iteramos sobre cada curso y cuando
-            // map encuentre cual es el q igual al que está agregado, le suma la cantidad
+    if (existe) { 
+        const prod = carrito.map(prod => { 
             if (prod.id === prodId) {
                 prod.cantidad++
             }
         })
-    } else { //EN CASO DE QUE NO ESTÉ, AGREGAMOS EL CURSO AL CARRITO
-        const item = stockProductos.find((prod) => prod.id === prodId)//Trabajamos con las ID
-        //Una vez obtenida la ID, lo que haremos es hacerle un push para agregarlo al carrito
+    } else { 
+        const item = stockProductos.find((prod) => prod.id === prodId)
 
         carrito.push(item)
     }
-    //Va a buscar el item, agregarlo al carrito y llama a la funcion actualizarCarrito, que recorre
-    //el carrito y se ve.
-    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
-    //MODIFICA EL CARRITO
-}
-//agregarAlCarrito(1) //Le pasamos el ID por parametro. Tenemos que asigarle como evento esta funcion al boton
-//con el id de su producto correspondiente
+
+    actualizarCarrito()  */
+
+
 
 
 // 5 - QUINTO PASO
