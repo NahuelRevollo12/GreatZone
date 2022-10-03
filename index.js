@@ -1,9 +1,9 @@
-let stockProductos = [
+/* let stockProductos = [
     { id: 1, nombre: "RTX 3060", cantidad: 1, desc: "GeForce RTX™ 3060 VENTUS 2X 12G OC", precio: 12000, gama: "low", img: './imagenes/rtx-3060.jpg' },
     { id: 2, nombre: "RTX 3070", cantidad: 1, desc: "ROG STRIX RTX3070 O8G V2-GAMING", precio: 13000, gama: "medium", img: './imagenes/rtx-3070.jpg' },
     { id: 3, nombre: "RTX 3080", cantidad: 1, desc: "EVGA GeForce RTX 3080 FTW3 ULTRA GAMING, 10G-P5-3897-KL, 10GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate, LHR", precio: 14000, gama: "high", img: './imagenes/rtx-3080.jpg' },
     { id: 4, nombre: "RTX 3090", cantidad: 1, desc: "EVGA GeForce RTX 3090 FTW3 ULTRA GAMING, 24G-P5-3987-KR, 24GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate", precio: 15000, gama: "high", img: './imagenes/rtx-3090.jpg' },
-]
+] */
 
 const contenedorProductos = document.getElementById('contenedor-productos')
 
@@ -49,7 +49,31 @@ botonVaciar.addEventListener('click', () => {
 })
 
 //PRIMER PASO, INYECTAR EL HTML.
-stockProductos.forEach((producto) => {
+let producto = fetch("/data.json")
+.then((res)=>res.json())
+.then((data)=>{
+    data.forEach((producto)=>{
+        const div = document.createElement('div')
+        div.classList.add('producto')
+        div.innerHTML = `
+        <img src=${producto.img} alt="Grafica">
+        <h3>${producto.nombre}</h3>
+        <p>${producto.desc}</p>
+        <p>Gama: ${producto.gama}</p>
+        <p class="precioProducto">Precio:$ ${producto.precio}</p>
+        <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+        `
+        contenedorProductos.appendChild(div)
+
+        const boton = document.getElementById(`agregar${producto.id}`)
+        boton.addEventListener('click', () => { agregarAlCarrito(producto.id) })
+    })
+})
+
+
+
+
+/* stockProductos.forEach((producto) => {
     const div = document.createElement('div')
     div.classList.add('producto')
     div.innerHTML = `
@@ -71,7 +95,7 @@ stockProductos.forEach((producto) => {
     //el add event listener
     boton.addEventListener('click', () => { agregarAlCarrito(producto.id) })
 
-})
+}) */
 
 
 //1- PRIMER PASO
@@ -102,8 +126,6 @@ const agregarAlCarrito = (prodId) => {
 //agregarAlCarrito(1) //Le pasamos el ID por parametro. Tenemos que asigarle como evento esta funcion al boton
 //con el id de su producto correspondiente
 
-let estadoPrecios = stockProductos.map(producto => producto.precio < 13500 ? 'La grafica es barata' : 'La grafica es cara')
-console.log(estadoPrecios);
 
 // 5 - QUINTO PASO
 const eliminarDelCarrito = (prodId) => {
@@ -155,8 +177,3 @@ const actualizarCarrito = () => {
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) ?? []
 actualizarCarrito()
-
-let [ primerNombre, segundoNombre ] = stockProductos;
-
-console.log(primerNombre);
-console.log(segundoNombre);
