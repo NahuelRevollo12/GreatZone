@@ -1,9 +1,3 @@
-/* let stockProductos = [
-    { id: 1, nombre: "RTX 3060", cantidad: 1, desc: "GeForce RTX™ 3060 VENTUS 2X 12G OC", precio: 12000, gama: "low", img: './imagenes/rtx-3060.jpg' },
-    { id: 2, nombre: "RTX 3070", cantidad: 1, desc: "ROG STRIX RTX3070 O8G V2-GAMING", precio: 13000, gama: "medium", img: './imagenes/rtx-3070.jpg' },
-    { id: 3, nombre: "RTX 3080", cantidad: 1, desc: "EVGA GeForce RTX 3080 FTW3 ULTRA GAMING, 10G-P5-3897-KL, 10GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate, LHR", precio: 14000, gama: "high", img: './imagenes/rtx-3080.jpg' },
-    { id: 4, nombre: "RTX 3090", cantidad: 1, desc: "EVGA GeForce RTX 3090 FTW3 ULTRA GAMING, 24G-P5-3987-KR, 24GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate", precio: 15000, gama: "high", img: './imagenes/rtx-3090.jpg' },
-] */
 
 const contenedorProductos = document.getElementById('contenedor-productos')
 
@@ -21,27 +15,19 @@ const cantidadTotal = document.getElementById('cantidadTotal')
 
 const botonFinalizar = document.getElementById('finalizar-compra');
 
-botonFinalizar.addEventListener('click', () =>{
+botonFinalizar.addEventListener('click', () => {
     Swal.fire({
         icon: 'success',
         title: 'Haz comprado con exito!',
         text: 'Gracias por elegirnos ',
         // footer: '<a href="">Why do I have this issue?</a>'
-      })
-      carrito.length = 0
-      actualizarCarrito()
-      console.log(carrito)
+    })
+    carrito.length = 0
+    actualizarCarrito()
+    console.log(carrito)
 })
 
 
-/* let carrito = []
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')) {
-        carrito = JSON.parse(localStorage.getItem('carrito'))
-        actualizarCarrito()
-    }
-}) */
 
 //SEXTO PASO
 botonVaciar.addEventListener('click', () => {
@@ -50,83 +36,66 @@ botonVaciar.addEventListener('click', () => {
 })
 
 //PRIMER PASO, INYECTAR EL HTML.
-let producto = fetch('/data.json')
-.then((res)=>res.json())
-.then((data)=>{
-    data.forEach((producto)=>{
+//1- PRIMER PASO
+
+let producto
+
+async function cargarProductos() {
+    producto = await fetch('./data.json')
+        .then((res) => res.json())
+        .then((data) => {
+            mostrarGraficas(data);
+            return data;
+        })
+}
+
+function mostrarGraficas(graficas) {
+    graficas.forEach((producto) => {
         const div = document.createElement('div')
         div.classList.add('producto')
         div.innerHTML = `
-        <img src=${producto.img} alt="Grafica">
+       <img src=${producto.img} alt="Grafica">
         <h3>${producto.nombre}</h3>
         <p>${producto.desc}</p>
         <p>Gama: ${producto.gama}</p>
         <p class="precioProducto">Precio:$ ${producto.precio}</p>
-        <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
-        `
+        <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>       
+       `
         contenedorProductos.appendChild(div)
 
         const boton = document.getElementById(`agregar${producto.id}`)
         boton.addEventListener('click', () => { agregarAlCarrito(producto.id) })
     })
-})
+}
 
-
-
-
-/* stockProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${producto.img} alt="Grafica">
-    <h3>${producto.nombre}</h3>
-    <p>${producto.desc}</p>
-    <p>Gama: ${producto.gama}</p>
-    <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
-    `
-
-    contenedorProductos.appendChild(div)
-
-    //2 - SEGUNDO PASO, LUEGO DE QUE INSERTEMOS EL HTML EN EL DOM:
-    const boton = document.getElementById(`agregar${producto.id}`)
-
-    //Por cada elemento de mi array, creo un div, lo cuelgo, le pongo un id particular, una vez colgado
-    //le hago un get element by id (el de agregar) Obtengo el elemento y a dicho elemento le agregamos
-    //el add event listener
-    boton.addEventListener('click', () => { agregarAlCarrito(producto.id) })
-
-}) */
-
-
-//1- PRIMER PASO
+cargarProductos();
 
 //AGREGAR AL CARRITO
 const agregarAlCarrito = (prodId) => {
-    const existe = carrito.some (prod =>prod.id === prodId)
+    const existe = carrito.some(prod => prod.id === prodId)
     let prod;
     let item;
-    existe? (prod = carrito.map(prod=>{
+    existe ? (prod = carrito.map(prod => {
         if (prod.id === prodId)
-        prod.cantidad++
-    })):(item = producto.find((prod) => prod.id === prodId), carrito.push(item))
+            prod.cantidad++
+    })) : (item = producto.find((prod) => prod.id === prodId), carrito.push(item))
     actualizarCarrito()
-}   
-  /*   const existe = carrito.some(prod => prod.id === prodId) 
+}
+/*   const existe = carrito.some(prod => prod.id === prodId) 
 
-    if (existe) { 
-        const prod = carrito.map(prod => { 
-            if (prod.id === prodId) {
-                prod.cantidad++
-            }
-        })
-    } else { 
-        const item = stockProductos.find((prod) => prod.id === prodId)
+  if (existe) { 
+      const prod = carrito.map(prod => { 
+          if (prod.id === prodId) {
+              prod.cantidad++
+          }
+      })
+  } else { 
+      const item = stockProductos.find((prod) => prod.id === prodId)
 
-        carrito.push(item)
-    }
+      carrito.push(item)
+  }
 
-    actualizarCarrito()  */
+  actualizarCarrito()  */
 
 
 
@@ -166,7 +135,7 @@ const actualizarCarrito = () => {
         `
 
         contenedorCarrito.appendChild(div)
-        
+
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
     })
