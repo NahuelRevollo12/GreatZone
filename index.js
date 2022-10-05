@@ -81,24 +81,6 @@ const agregarAlCarrito = (prodId) => {
     })) : (item = producto.find((prod) => prod.id === prodId), carrito.push(item))
     actualizarCarrito()
 }
-/*   const existe = carrito.some(prod => prod.id === prodId) 
-
-  if (existe) { 
-      const prod = carrito.map(prod => { 
-          if (prod.id === prodId) {
-              prod.cantidad++
-          }
-      })
-  } else { 
-      const item = stockProductos.find((prod) => prod.id === prodId)
-
-      carrito.push(item)
-  }
-
-  actualizarCarrito()  */
-
-
-
 
 // 5 - QUINTO PASO
 const eliminarDelCarrito = (prodId) => {
